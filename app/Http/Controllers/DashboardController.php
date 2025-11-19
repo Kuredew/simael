@@ -11,6 +11,8 @@ class DashboardController extends Controller
     public function index()
     {
         $student = Student::find(session('student_id'));
-        return view('pages.dashboard', compact('student'));
+        $squad = $student->squad;
+
+        return view('pages.dashboard', compact('student', 'squad'));
     }
 }
