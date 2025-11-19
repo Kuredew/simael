@@ -26,7 +26,7 @@ class DefaultStudentSeeder extends Seeder
 
         Student::create([
             'name' => 'Ryandra',
-            'nisn' => '123456789',
+            'nisn' => '12345678',
             'major' => 'TJKT',
             'password' => Hash::make('ryan123'),
             'status' => 'verified',
