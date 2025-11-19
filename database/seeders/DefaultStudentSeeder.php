@@ -21,11 +21,12 @@ class DefaultStudentSeeder extends Seeder
             'major' => 'PPLG',
             'password' => Hash::make('lutfi123'),
             'status' => 'pending',
+            'squad_id' => 1,
         ]);
 
         Student::create([
             'name' => 'Ryandra',
-            'nisn' => '123456789',
+            'nisn' => '12345678',
             'major' => 'TJKT',
             'password' => Hash::make('ryan123'),
             'status' => 'verified',

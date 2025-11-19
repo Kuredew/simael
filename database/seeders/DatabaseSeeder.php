@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            DefaultStudentSeeder::class
+            DefaultSquadSeeder::class,
+            DefaultStudentSeeder::class,
         ]);
     }
 }
