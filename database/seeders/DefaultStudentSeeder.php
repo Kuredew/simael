@@ -21,6 +21,7 @@ class DefaultStudentSeeder extends Seeder
             'major' => 'PPLG',
             'password' => Hash::make('lutfi123'),
             'status' => 'pending',
+            'squad_id' => 1,
         ]);
 
         Student::create([
