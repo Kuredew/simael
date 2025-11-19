@@ -14,6 +14,6 @@ class Squad extends Model
 
     public function users()
     {
-        $this->hasMany(Student::class);
+        return $this->hasMany(Student::class);
     }
 }

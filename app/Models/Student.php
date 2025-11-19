@@ -18,6 +18,6 @@ class Student extends Model
 
     public function squad()
     {
-        $this->belongsTo(Squad::class);
+        return $this->belongsTo(Squad::class);
     }
 }
