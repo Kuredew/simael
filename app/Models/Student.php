@@ -13,5 +13,11 @@ class Student extends Model
         'major',
         'password',
         'status',
+        'squad_id',
     ];
+
+    public function squad()
+    {
+        $this->belongsTo(Squad::class);
+    }
 }
