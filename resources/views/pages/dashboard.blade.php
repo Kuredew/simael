@@ -6,7 +6,7 @@
 
 <h1>Welcome {{ $student['name'] }}</h1>
 @if ($squad)
-<p>Squad lutpi : {{ $squad->name }}</p>    
+<p>Squad kamu : {{ $squad->name }}</p> 
 @else
 <p>Kamu belum masuk kedalam squad</p>
 @endif

@@ -1,11 +1,92 @@
+{{-- resources/views/layouts/app.blade.php --}}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIMAEL | @yield('title', 'Other')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>SIMAEL | @yield('title', 'Dashboard')</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    
+    @stack('styles')
 </head>
-<body>
-    @yield('content')
+<body class="bg-gray-50 font-sans antialiased">
+    
+    {{-- Navbar --}}
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo & Brand -->
+                <div class="flex items-center">
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">SIMAEL</h1>
+                        <p class="text-xs text-gray-500">
+                            @auth
+                                @if(auth()->user()->role == 'teacher')
+                                    Teacher Dashboard
+                                @elseif(auth()->user()->role == 'student')
+                                    Student Dashboard
+                                @else
+                                    Sistem Manajemen Pintar PKL
+                                @endif
+                            @else
+                                Sistem Manajemen Pintar PKL
+                            @endauth
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Side Navigation -->
+                <div class="flex items-center space-x-4">
+                    @auth
+                        <!-- Home Link -->
+                        <a href="{{ route('dashboard') }}" class="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                            <span class="text-sm font-medium hidden sm:inline">Home</span>
+                        </a>
+
+                        <!-- Logout Link -->
+                        <form method="POST" action="{{ route('logout') }}" class="inline">
+                            @csrf
+                            <button type="submit" class="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                                </svg>
+                                <span class="text-sm font-medium hidden sm:inline">Logout</span>
+                            </button>
+                        </form>
+                    @else
+                        <!-- Guest Navigation -->
+                        <a href="{{ route('login') }}" class="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition">
+                            <span class="text-sm font-medium">Login</span>
+                        </a>
+                    @endauth
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    {{-- Main Content --}}
+    <main>
+        @yield('content')
+    </main>
+
+    {{-- Scripts --}}
+    @stack('scripts')
 </body>
 </html>
