@@ -17,12 +17,40 @@ class DefaultStudentSeeder extends Seeder
         //
         Student::create([
             'name' => 'Lutfi',
-            'nisn' => '123456789',
+            'nisn' => '1234567890',
             'major' => 'PPLG',
             'password' => Hash::make('lutfi123'),
             'status' => 'pending',
             'squad_id' => 1,
         ]);
+        
+        Student::create([
+            'name' => 'Aufa',
+            'nisn' => '1234567891',
+            'major' => 'PPLG',
+            'password' => Hash::make('aufa123'),
+            'status' => 'pending',
+            'squad_id' => 1,
+        ]);
+                
+        Student::create([
+            'name' => 'rofi',
+            'nisn' => '1234567892',
+            'major' => 'PPLG',
+            'password' => Hash::make('rofi123'),
+            'status' => 'pending',
+            'squad_id' => 1,
+        ]);         
+        
+        Student::create([
+            'name' => 'dika',
+            'nisn' => '1234567893',
+            'major' => 'PPLG',
+            'password' => Hash::make('dika123'),
+            'status' => 'pending',
+            'squad_id' => 1,
+        ]);
+
 
         Student::create([
             'name' => 'Ryandra',
@@ -31,5 +59,49 @@ class DefaultStudentSeeder extends Seeder
             'password' => Hash::make('ryan123'),
             'status' => 'verified',
         ]);
+
+        Student::create([
+            'name' => 'dandi',
+            'nisn' => '123456781',
+            'major' => 'TJKT',
+            'password' => Hash::make('dandi123'),
+            'status' => 'verified',
+        ]);
+
+        Student::create([
+            'name' => 'excel',
+            'nisn' => '123456782',
+            'major' => 'TJKT',
+            'password' => Hash::make('excel123'),
+            'status' => 'verified',
+        ]);
+        
+        Student::create([
+            'name' => 'pindut',
+            'nisn' => '123456783',
+            'major' => 'TJKT',
+            'password' => Hash::make('pinndut123'),
+            'status' => 'verified',
+
+        ]);Student::create([
+            'name' => 'kennnet',
+            'nisn' => '123456784',
+            'major' => 'TJKT',
+            'password' => Hash::make('kennet123'),
+            'status' => 'verified',
+        ]);
+
+        Student::create([
+            'name' => 'adrian',
+            'nisn' => '123456785',
+            'major' => 'TJKT',
+            'password' => Hash::make('adrian123'),
+            'status' => 'verified',
+        ]);
+        
+        
     }
 }
+
+
+
