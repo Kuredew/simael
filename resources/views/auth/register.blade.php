@@ -10,7 +10,7 @@
         <form class="lg:max-w-md w-full" action="{{ route('register') }}" method="post">
             @csrf
 
-          <h1 class="text-slate-900 text-3xl font-semibold mb-8">Buat akun Student</h1>
+          <h1 class="text-slate-900 text-3xl font-semibold mb-8">Buat akun Murid</h1>
           <div class="space-y-6">
             <div>
               <label class="text-slate-900 text-sm mb-2 block">Nama</label>
