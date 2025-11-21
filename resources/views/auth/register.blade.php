@@ -25,7 +25,7 @@
                     @if (session()->has('failed'))
 
                         <input name="name" type="text" class="bg-gray-100 w-full text-slate-900 text-sm px-4 py-3 focus:bg-transparent border  border-red-500 focus:border-black outline-none transition-all" placeholder="Masukkan nama lengkap" value="{{ old('name') }}" required/>
-                        <p>{{ session('failed') }}</p>
+                        <p class="text-sm mt-1 text-red-500">{{ session('failed') }}</p>
 
                     @else
                         <input name="name" type="text" class="bg-gray-100 w-full text-slate-900 text-sm px-4 py-3 focus:bg-transparent border border-gray-100 focus:border-black outline-none transition-all" placeholder="Masukkan nama lengkap" value="{{ old('name') }}" required/>
@@ -66,7 +66,7 @@
               Buat
             </button>
           </div>
-          <p class="text-sm text-slate-600 mt-6">Sudah punya akun? <a href="javascript:void(0);" class="text-blue-600 font-semibold hover:underline ml-1">Login sini</a></p>
+          <p class="text-sm text-slate-600 mt-6">Sudah punya akun? <a href="{{ route('loginPage') }}" class="text-blue-600 font-semibold hover:underline ml-1">Login sini</a></p>
         </form>
 
         <div class="h-full">
