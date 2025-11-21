@@ -26,7 +26,7 @@
 <body class="bg-gray-50 font-sans antialiased">
     
     {{-- Navbar --}}
-    <nav class="bg-white border-b border-gray-200">
+    <nav class="fixed w-full bg-white border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <!-- Logo & Brand -->
@@ -80,7 +80,7 @@
     </nav>
 
     {{-- Main Content --}}
-    <main>
+    <main class="pt-20">
         @yield('content')
     </main>
 
