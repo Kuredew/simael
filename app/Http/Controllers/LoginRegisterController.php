@@ -41,6 +41,10 @@ class LoginRegisterController extends Controller
             return back()->with('failed', 'NISN Sudah Terdaftar di SIMAEL!');
         }
 
+        if ($validatedData['password'] != $validatedData['confirm-password']) {
+            return back()->with('failed', 'Re-type password dengan benar!');
+        }
+
         Student::create([
             'name' => $validatedData['name'],
             'nisn' => $validatedData['nisn'],
