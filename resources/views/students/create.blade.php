@@ -46,7 +46,7 @@
 
         {{-- Name Field --}}
         <div>
-            <label for="name" class="block text-sm font-semibold mb-2">Namse</label>
+            <label for="name" class="block text-sm font-semibold mb-2">Name</label>
             <input 
                 type="text" 
                 id="name" 
