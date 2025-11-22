@@ -206,7 +206,7 @@
             <h2 id="radix-_r_g_" class="text-lg font-semibold leading-none tracking-tight">Buat Squad Baru</h2>
             <p id="radix-_r_h_" class="text-sm text-muted-foreground">Masukkan nama squad PKL yang ingin kamu buat. Kamu akan menjadi leader dari squad ini.</p>
         </div>
-        <form action="{{ route('squads.create') }}" method="post"> 
+        <form action="{{ route('squads.store') }}" method="post"> 
             @csrf
             <div class="space-y-4 py-4">
                 <div class="space-y-2">
