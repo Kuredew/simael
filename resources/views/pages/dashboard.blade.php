@@ -68,7 +68,7 @@
                                         Aktif
                                     </div>
                                     <h3 class="text-2xl font-bold text-foreground mb-2">{{ $squad->name }}</h3>
-                                    <p class="text-muted-foreground">Leader: {{ $squad->leader->name }}</p>
+                                    <p class="text-muted-foreground">Leader : {{ $squad->leader->name }}</p>
                                 </div>
                                 <div class="text-right">
                                     <p class="text-sm text-muted-foreground mb-1">Dibuat pada</p>
@@ -83,7 +83,7 @@
                                         <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
                                         <circle cx="9" cy="7" r="4"></circle>
                                     </svg>
-                                    Anggota Squad (2)
+                                    Anggota Squad ({{ count($squad->users) }})
                                 </h4>
                                 <div class="space-y-3">
                                     @foreach ($squad->users as $student)
@@ -199,8 +199,8 @@
                     </div>
         @endif
     </main>
-    <div id="modal2" data-state="closed" class="fixed inset-0 z-20 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" data-aria-hidden="true" aria-hidden="true" style="pointer-events: auto;"></div>
-    <div id="modal1" class="fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg sm:max-w-md" style="pointer-events: auto;">
+    <div id="modal2" data-state="closed" class="hidden fixed inset-0 z-20 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" data-aria-hidden="true" aria-hidden="true" style="pointer-events: auto;"></div>
+    <div id="modal1" class="hidden fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg sm:max-w-md" style="pointer-events: auto;">
         
         <div class="flex flex-col space-y-1.5 text-center sm:text-left">
             <h2 id="radix-_r_g_" class="text-lg font-semibold leading-none tracking-tight">Buat Squad Baru</h2>
@@ -211,11 +211,11 @@
             <div class="space-y-4 py-4">
                 <div class="space-y-2">
                     <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="squadName">Nama Squad</label>
-                    <input class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-ring" id="squadName" placeholder="Contoh: Web Dev Squad" value="" required>
+                    <input name="name" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-ring" id="squadName" placeholder="Contoh: Web Dev Squad" value="" required>
                 </div>
                 <div class="space-y-2">
                     <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="squadName">Deskripsi</label>
-                    <input class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-ring" id="squadName" placeholder="Ini Opsional" value="">
+                    <input name="description" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-ring" id="squadName" placeholder="Ini Opsional" value="">
                 </div>
             </div>
             
@@ -250,9 +250,9 @@
             modal1.classList.add('hidden');
         }
 
-        openModalCreateSquad.addEventListener('click', openModal);
         closeModalCreateSquad1.addEventListener('click', closeModal);
         closeModalCreateSquad2.addEventListener('click', closeModal);
+        if (openModalCreateSquad) openModalCreateSquad.addEventListener('click', openModal);
     </script>
 </div>
 
