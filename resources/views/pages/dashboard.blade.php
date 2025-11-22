@@ -34,7 +34,7 @@
                 </div>
                 <h3 class="text-xl font-semibold text-muted-foreground mb-6">Kamu belum memiliki squad PKL</h3>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground shadow hover:bg-blue-500 hover:text-white cursor-pointer h-10 rounded-md px-8 bg-gradient-primary hover:opacity-90 shadow-elegant">
+                    <button id="openModalCreateSquad" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground shadow hover:bg-blue-500 hover:text-white cursor-pointer h-10 rounded-md px-8 bg-gradient-primary hover:opacity-90 shadow-elegant">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-plus w-5 h-5 mr-2" aria-hidden="true">
                             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                             <circle cx="9" cy="7" r="4"></circle>
@@ -68,7 +68,7 @@
                                         Aktif
                                     </div>
                                     <h3 class="text-2xl font-bold text-foreground mb-2">{{ $squad->name }}</h3>
-                                    <p class="text-muted-foreground">Leader: {{ $squad->leader->name }}</p>
+                                    <p class="text-muted-foreground">Leader : {{ $squad->leader->name }}</p>
                                 </div>
                                 <div class="text-right">
                                     <p class="text-sm text-muted-foreground mb-1">Dibuat pada</p>
@@ -83,7 +83,7 @@
                                         <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
                                         <circle cx="9" cy="7" r="4"></circle>
                                     </svg>
-                                    Anggota Squad (2)
+                                    Anggota Squad ({{ count($squad->users) }})
                                 </h4>
                                 <div class="space-y-3">
                                     @foreach ($squad->users as $student)
@@ -199,6 +199,61 @@
                     </div>
         @endif
     </main>
+    <div id="modal2" data-state="closed" class="hidden fixed inset-0 z-20 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" data-aria-hidden="true" aria-hidden="true" style="pointer-events: auto;"></div>
+    <div id="modal1" class="hidden fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg sm:max-w-md" style="pointer-events: auto;">
+        
+        <div class="flex flex-col space-y-1.5 text-center sm:text-left">
+            <h2 id="radix-_r_g_" class="text-lg font-semibold leading-none tracking-tight">Buat Squad Baru</h2>
+            <p id="radix-_r_h_" class="text-sm text-muted-foreground">Masukkan nama squad PKL yang ingin kamu buat. Kamu akan menjadi leader dari squad ini.</p>
+        </div>
+        <form action="{{ route('squads.store') }}" method="post"> 
+            @csrf
+            <div class="space-y-4 py-4">
+                <div class="space-y-2">
+                    <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="squadName">Nama Squad</label>
+                    <input name="name" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-ring" id="squadName" placeholder="Contoh: Web Dev Squad" value="" required>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="squadName">Deskripsi</label>
+                    <input name="description" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-ring" id="squadName" placeholder="Ini Opsional" value="">
+                </div>
+            </div>
+            
+            <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
+                <button id="closeModalCreateSquad1" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input shadow-sm hover:bg-red-500 hover:text-white cursor-pointer h-9 px-4 py-2">Batal</button>
+                <button type="submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground shadow hover:bg-blue-500 hover:text-white cursor-pointer h-9 px-4 py-2 bg-gradient-primary">Buat Squad</button>
+            </div>
+            
+            <button id="closeModalCreateSquad2" type="button" class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-4 w-4" aria-hidden="true">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                </svg>
+                <span class="sr-only">Close</span>
+            </button>
+        </form>
+    </div>
+    <script>
+        const modal1 = document.getElementById('modal1');
+        const modal2 = document.getElementById('modal2');
+        const openModalCreateSquad = document.getElementById('openModalCreateSquad');
+        const closeModalCreateSquad1 = document.getElementById('closeModalCreateSquad1');
+        const closeModalCreateSquad2 = document.getElementById('closeModalCreateSquad2');
+
+        function openModal() {
+            modal1.classList.remove('hidden');
+            modal2.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal2.classList.add('hidden');
+            modal1.classList.add('hidden');
+        }
+
+        closeModalCreateSquad1.addEventListener('click', closeModal);
+        closeModalCreateSquad2.addEventListener('click', closeModal);
+        if (openModalCreateSquad) openModalCreateSquad.addEventListener('click', openModal);
+    </script>
 </div>
 
 @endsection
