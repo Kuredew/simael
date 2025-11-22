@@ -16,8 +16,8 @@ class InviteSquadController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function destroy(InviteSquad $inviteSquad) {
-        $inviteSquad->delete();
+    public function destroy(InviteSquad $invite) {
+        $invite->delete();
 
         return redirect()->route('dashboard');
     }
