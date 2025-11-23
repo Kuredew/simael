@@ -109,74 +109,22 @@ class SquadController extends Controller
      */
     public function store(Request $request)
     {
+        $student = Student::find(session('student_id'));
+
         $validated = $request->validate([
             'name' => 'required|string|min:3|max:20|unique:squads,name',
-            'nama_perusahaan' => 'nullable|string|max:100',
-            'alamat_perusahaan' => 'nullable|string|max:255',
-            'status' => 'required|in:on-progress,diterima,pengajuan,unknown',
+            'description' => 'nullable|string',
         ]);
 
-        // // Validate member_nisn format and that they are exactly 10 digits
-        // $memberNisnsArray = array_map('trim', array_filter(explode(',', $validated['members_nisn'])));
-        
-        // // Check if at least one member is provided
-        // if (empty($memberNisnsArray)) {
-        //     return back()->withErrors(['members_nisn' => 'Minimal harus ada satu anggota']);
-        // }
-        
-        // // Check that all NISNs are exactly 10 digits
-        // $invalidNisns = array_filter($memberNisnsArray, function ($nisn) {
-        //     return !preg_match('/^\d{10}$/', $nisn);
-        // });
-        // if (!empty($invalidNisns)) {
-        //     return back()->withErrors(['members_nisn' => 'Semua NISN anggota harus 10 angka: ' . implode(', ', $invalidNisns)]);
-        // }
-        
-        // $memberStudents = Student::whereIn('nisn', $memberNisnsArray)->get();
-        // $nisnsFoundInDb = $memberStudents->pluck('nisn')->toArray();
-        // $idsInvalid = array_diff($memberNisnsArray, $nisnsFoundInDb);
+        $squad = Squad::create([
+            'name' => $validated['name'],
+            'description' => $validated['description'],
+            'leader_id' => $student->id,
+        ]);
 
-        // if (!empty($idsInvalid)) {
-        //     return back()->withErrors(['members_nisn' => 'NISN tidak ditemukan: ' . implode(', ', $idsInvalid)]);
-        // }
+        $student->update(['squad_id' => $squad->id]);
 
-        // // Check if any ID is already used in other squads
-        // $idsForValidation = array_merge([$validated['leader_nisn']], $memberNisnsArray);
-        // $idsAlreadyUsed = $this->getUsedIds($idsForValidation);
-
-        // if (!empty($idsAlreadyUsed)) {
-        //     return back()->withErrors(['members_nisn' => 'NISN sudah digunakan di squad lain: ' . implode(', ', $idsAlreadyUsed)]);
-        // }
-
-        // // Get leader student
-        // $leaderStudent = Student::where('nisn', $validated['leader_nisn'])->first();
-
-        // // Create squad with both legacy and new relationship data
-        // $squad = Squad::create([
-        //     'name' => $validated['name'],
-        //     'leader_id' => $leaderStudent->id,
-        //     'leader_nisn' => $validated['leader_nisn'],
-        //     'members_nisn' => !empty($memberNisnsArray) ? implode(', ', $memberNisnsArray) : '',
-        //     'nama_perusahaan' => $validated['nama_perusahaan'] ?? null,
-        //     'alamat_perusahaan' => $validated['alamat_perusahaan'] ?? null,
-        //     'status' => $validated['status'],
-        // ]);
-
-        // // Update students' squad_id to assign them to this squad
-        // // Assign leader to squad
-        // if ($leaderStudent) {
-        //     $leaderStudent->update(['squad_id' => $squad->id]);
-        // }
-        
-        // // Assign members to squad
-        // if (!empty($memberNisnsArray)) {
-        //     Student::whereIn('nisn', $memberNisnsArray)->update(['squad_id' => $squad->id]);
-        // }
-
-        // // Clear session data after successful squad creation
-        // session()->forget('squad_form_data');
-
-        // return redirect()->route('squads.index')->with('success', 'Squad berhasil dibuat!');
+        return redirect()->route('dashboard');
     }
 
     /**
