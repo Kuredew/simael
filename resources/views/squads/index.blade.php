@@ -90,7 +90,7 @@
                     <tr class="bg-blue-50">
                         <td class="border border-gray-300 px-3 py-2 font-medium">Total Memiliki Perusahaan</td>
                         <td class="border border-gray-300 px-3 py-2 text-center font-semibold" id="stat-has-company">
-                            {{ $allSquads->whereNotNull('nama_perusahaan')->count() }}
+                            {{ $allSquads->whereNotNull('company_name')->count() }}
                         </td>
                     </tr>
 
@@ -98,7 +98,7 @@
                     <tr>
                         <td class="border border-gray-300 px-3 py-2 font-medium">Total Tidak Memiliki Perusahaan</td>
                         <td class="border border-gray-300 px-3 py-2 text-center font-semibold" id="stat-no-company">
-                            {{ $allSquads->whereNull('nama_perusahaan')->count() }}
+                            {{ $allSquads->whereNull('company_name')->count() }}
                         </td>
                     </tr>
 
