@@ -167,7 +167,7 @@
 
                                 <div>
                                     <p class="font-semibold text-gray-600">Perusahaan</p>
-                                    <p class="text-gray-800 text-sm truncate">{{ $squad->nama_perusahaan ?? 'Tidak Ada' }}</p>
+                                    <p class="text-gray-800 text-sm truncate">{{ $squad->company_name ?? 'Tidak Ada' }}</p>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +215,7 @@
                 {
                     id: {{ $squad->id }},
                     status: '{{ $squad->status }}',
-                    hasCompany: {{ !is_null($squad->nama_perusahaan) ? 'true' : 'false' }}
+                    hasCompany: {{ !is_null($squad->company_name) ? 'true' : 'false' }}
                 },
                 @endforeach
             ]
