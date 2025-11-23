@@ -23,6 +23,5 @@ Route::resource('students', StudentController::class);
 
 Route::resource('squads', SquadController::class);
 
-
 Route::match(['get', 'post'], '/squads-preview', [SquadController::class, 'preview'])->name('squads.preview');
 Route::resource('invite', InviteSquadController::class);
