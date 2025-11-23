@@ -157,7 +157,7 @@
 
                                 <div>
                                     <p class="font-semibold text-gray-600">Jumlah Anggota</p>
-                                    <p class="text-gray-800 text-lg font-bold">{{ $squad->totalMemberCount() }} orang</p>
+                                    <p class="text-gray-800 text-lg font-bold">{{ count($squad->users) }} orang</p>
                                 </div>
 
                                 <div>
