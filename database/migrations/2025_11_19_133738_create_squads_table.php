@@ -21,6 +21,7 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('students')
                 ->nullOnDelete();
+            $table->enum('status', ['pengajuan', 'on-progress', 'diterima']);
             $table->timestamps();
         });
     }
