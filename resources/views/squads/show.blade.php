@@ -80,11 +80,11 @@
                 <table class="w-full text-sm">
                     <tr class="hover:bg-gray-50">
                         <td class="px-3 py-2 font-medium text-gray-700 w-40">Nama Perusahaan</td>
-                        <td class="px-3 py-2 break-words max-w-xs">{{ $squad->nama_perusahaan ?? '-' }}</td>
+                        <td class="px-3 py-2 break-words max-w-xs">{{ $squad->company_name ?? '-' }}</td>
                     </tr>
                     <tr class="hover:bg-gray-50">
                         <td class="px-3 py-2 font-medium text-gray-700 w-40">Alamat Perusahaan</td>
-                        <td class="px-3 py-2 break-words max-w-2xl whitespace-normal">{{ $squad->alamat_perusahaan ?? '-' }}</td>
+                        <td class="px-3 py-2 break-words max-w-2xl whitespace-normal">{{ $squad->company_address ?? '-' }}</td>
                     </tr>
                 </table>
             </div>
