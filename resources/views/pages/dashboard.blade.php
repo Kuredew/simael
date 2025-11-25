@@ -182,6 +182,7 @@
                 @foreach ($student->invites as $invite)
                 <div class="rounded-xl text-card-foreground shadow p-5 card-shadow-hover border-0 bg-card">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        @if ($invite->squad)
                         <div class="flex-1">
                             <h4 class="font-semibold text-lg mb-1">{{ $invite->squad->name }}</h4>
                             <div class="flex items-center gap-4 text-sm text-muted-foreground">
@@ -190,7 +191,16 @@
                                 <span>{{ count($invite->squad->users) }} anggota</span>
                             </div>
                         </div>
+                        @else
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-lg mb-1">Squad tidak ada atau telah dihapus :(</h4>
+                            <div class="flex items-center gap-4 text-sm text-muted-foreground">
+                                <span>Leader: -</span>
+                            </div>
+                        </div>
+                        @endif
                         <div class="flex gap-2">
+                            @if ($invite->squad)
                             <form action="{{ route('invite.join', $invite) }}" method="post">
                                 @csrf
                                 <button type="submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground shadow h-8 rounded-md px-3 text-xs bg-success hover:bg-blue-500 hover:text-white cursor-pointer">
@@ -213,6 +223,20 @@
                                     Tolak
                                 </button>
                             </form>
+                            @else
+                        <form action="{{ route('invite.destroy', $invite) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border shadow-sm hover:text-white hover:bg-red-500 h-8 rounded-md px-3 text-xs border-destructive text-destructive hover:bg-destructive/10 cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-x w-4 h-4 mr-1" aria-hidden="true">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="m15 9-6 6"></path>
+                                        <path d="m9 9 6 6"></path>
+                                    </svg>
+                                    Hapus
+                                </button>
+                            </form>
+                            @endif
                         </div>
                     </div>
                 </div>
