@@ -85,9 +85,19 @@
                                     <h3 class="text-2xl font-bold text-foreground mb-2">{{ $squad->name }}</h3>
                                     <p class="text-muted-foreground">Leader : {{ $squad->leader->name }}</p>
                                 </div>
-                                <div class="text-right">
-                                    <p class="text-sm text-muted-foreground mb-1">Dibuat pada</p>
-                                    <p class="text-sm font-medium">22/11/2025</p>
+                                <div class="text-right flex flex-col items-end gap-5">
+                                    <form action="{{ route('squads.leave', $squad) }}" method="post">
+                                        @csrf
+                                        <button>
+                                            <svg onclick="confirm('Apakah kamu yakin ingin keluar dari Squad ini?, jika kamu Leader, kamu akan mengeluarkan semua member dari Squad ini.');" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 opacity-50 hover:opacity-100 transition-all cursor-pointer">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                    <div class="text-right">
+                                        <p class="text-sm text-muted-foreground mb-1">Dibuat pada</p>
+                                        <p class="text-sm font-medium">22/11/2025</p>
+                                    </div>
                                 </div>
                             </div>
                             
