@@ -16,7 +16,7 @@ class GuestMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (session('student_id') && Student::find(session('student_id')) || session('teacher_id'))
+        if (session('student_id') && Student::find(session('student_id')))
         {
             return redirect()->route('dashboard');
         }
