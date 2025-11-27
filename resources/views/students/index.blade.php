@@ -158,7 +158,7 @@
                                     </td>
                                     <td class="border border-gray-300 px-2 py-1 text-center">
                                         @if($student->status === 'verified')
-                                            <span class="px-2 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded">Verified</span>
+                                            <span class="px-2 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded transition-colors duration-150 hover:bg-green-200">Verified</span>
                                         @else
                                             <form method="POST" action="{{ route('students.update', $student) }}" style="display:inline;">
                                                 @csrf
@@ -167,7 +167,7 @@
                                                 <input type="hidden" name="name" value="{{ $student->name }}">
                                                 <input type="hidden" name="major" value="{{ $student->major }}">
                                                 <input type="hidden" name="status" value="verified">
-                                                <button type="submit" class="relative group px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-xs">
+                                                <button type="submit" class="relative group px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-xs transition-colors duration-150 hover:bg-yellow-200">
                                                     <span class="group-hover:hidden">pending</span>
                                                     <span class="hidden group-hover:inline text-blue-700">approve?</span>
                                                 </button>
@@ -243,7 +243,7 @@
                                     </td>
                                     <td class="border border-gray-300 px-2 py-1 text-center">
                                         @if($student->status === 'verified')
-                                            <span class="px-2 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded">Verified</span>
+                                            <span class="px-2 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded transition-colors duration-150 hover:bg-green-200">Verified</span>
                                         @else
                                             <form method="POST" action="{{ route('students.update', $student) }}" style="display:inline;">
                                                 @csrf
@@ -252,7 +252,7 @@
                                                 <input type="hidden" name="name" value="{{ $student->name }}">
                                                 <input type="hidden" name="major" value="{{ $student->major }}">
                                                 <input type="hidden" name="status" value="verified">
-                                                <button type="submit" class="relative group px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-xs">
+                                                <button type="submit" class="relative group px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-xs transition-colors duration-150 hover:bg-yellow-200">
                                                     <span class="group-hover:hidden">pending</span>
                                                     <span class="hidden group-hover:inline text-blue-700">approve?</span>
                                                 </button>
