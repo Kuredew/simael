@@ -14,7 +14,7 @@
             <button id="copyLinkButton" type="submit" class="py-3 px-6 text-sm text-white tracking-wide bg-blue-600 hover:bg-blue-700 focus:outline-none cursor-pointer">
               Salin Link Akun
             </button>
-            <input id="linkToCopy" type="hidden" value="{{ route('students.show', $student) }}">
+            <input id="linkToCopy" type="hidden" value="{{ route('teacher.students.show', $student) }}">
           </div>
       </div>
     </div>
