@@ -14,7 +14,7 @@
 
     {{-- Squad Information Card --}}
     <div class="bg-white border border-gray-300 rounded shadow-md p-6 mb-6">
-        
+
         {{-- Status Badge --}}
         <div class="mb-4">
             <span class="px-3 py-1 rounded text-xs font-semibold
@@ -113,7 +113,7 @@
                             <tr class="hover:bg-gray-50 bg-blue-50">
                                 <td class="border border-gray-300 px-3 py-2">Leader</td>
                                 <td class="border border-gray-300 px-3 py-2 font-semibold">
-                                    <a href="{{ route('students.show', $squad->leader) }}" class="text-blue-600 hover:text-blue-800 hover:underline">
+                                    <a href="{{ route('teacher.students.show', $squad->leader) }}" class="text-blue-600 hover:text-blue-800 hover:underline">
                                         {{ $squad->leader->name }}
                                     </a>
                                 </td>
@@ -129,7 +129,7 @@
                                 <tr class="hover:bg-gray-50">
                                     <td class="border border-gray-300 px-3 py-2">{{ $memberIndex++ }}</td>
                                     <td class="border border-gray-300 px-3 py-2">
-                                        <a href="{{ route('students.show', $member) }}" class="text-blue-600 hover:text-blue-800 hover:underline">
+                                        <a href="{{ route('teacher.students.show', $member) }}" class="text-blue-600 hover:text-blue-800 hover:underline">
                                             {{ $member->name }}
                                         </a>
                                     </td>
