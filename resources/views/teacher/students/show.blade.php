@@ -44,7 +44,7 @@
             <div class="text-right">
                 @if($student->squad)
                     <div class="flex gap-2 justify-end flex-wrap">
-                        <a href="{{ route('squads.show', $student->squad) }}" class="px-3 py-1 bg-blue-200 hover:bg-blue-300 text-blue-900 text-sm font-semibold rounded border border-blue-500 transition">
+                        <a href="{{ route('teacher.squads.show', $student->squad) }}" class="px-3 py-1 bg-blue-200 hover:bg-blue-300 text-blue-900 text-sm font-semibold rounded border border-blue-500 transition">
                             {{ $student->squad->name }}
                         </a>
                     </div>
@@ -60,7 +60,7 @@
             @if($student->status === 'verified')
                 <span class="px-2 py-0.5 bg-green-100 text-green-800 text-xs font-semibold rounded transition-colors duration-150 hover:bg-green-200">Verified</span>
             @else
-                <form method="POST" action="{{ route('students.update', $student) }}" style="display:inline;">
+                <form method="POST" action="{{ route('teacher.students.update', $student) }}" style="display:inline;">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="nisn" value="{{ $student->nisn }}">
