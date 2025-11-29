@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\InviteSquad;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
 
 class InviteSquadController extends Controller
 {
@@ -19,7 +20,7 @@ class InviteSquadController extends Controller
 
     public function join(InviteSquad $invite)
     {
-        $student = Student::find(session('student_id'));
+        $student = Auth::guard('student')->user();
 
         $student->update([
             'squad_id' => $invite['squad_id']

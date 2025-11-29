@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Squad;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SquadController extends Controller
 {
@@ -109,7 +110,7 @@ class SquadController extends Controller
      */
     public function store(Request $request)
     {
-        $student = Student::find(session('student_id'));
+        $student = Auth::guard('student')->user();
 
         $validated = $request->validate([
             'name' => 'required|string|min:3|max:20|unique:squads,name',
@@ -236,7 +237,7 @@ class SquadController extends Controller
 
     public function leave(Squad $squad)
     {
-        $student = Student::find(session('student_id'));
+        $student = Auth::guard('student')->user();
 
         // Hapus squad jika leader keluar dari squad
         if ($student->id == $squad->leader_id) {
