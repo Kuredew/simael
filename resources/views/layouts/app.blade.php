@@ -52,7 +52,7 @@
 
                 <!-- Right Side Navigation -->
                 <div class="flex items-center space-x-4">
-                    @if(auth()->guard('student')->check())
+                    @student
                         <!-- Home Link for Student -->
                         <a href="{{ route('dashboard') }}" class="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -70,7 +70,8 @@
                                 <span class="text-sm font-medium hidden sm:inline">Logout</span>
                             </button>
                         </form>
-                    @elseif(auth()->guard('teacher')->check())
+                    @else
+                    @teacher
                         <!-- Home Link for Teacher -->
                         <a href="{{ route('teacher.dashboard') }}" class="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +94,8 @@
                         <a href="{{ route('login') }}" class="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition">
                             <span class="text-sm font-medium">Login</span>
                         </a>
-                    @endif
+                    @endteacher
+                    @endstudent
                 </div>
             </div>
         </div>
