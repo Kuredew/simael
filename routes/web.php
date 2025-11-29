@@ -19,6 +19,7 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::post('/logout', 'logout')->name('logout');
 });
 
+Route::resource('squads', SquadController::class);
 Route::post('/squads/{squad}/leave', [SquadController::class, 'leave'])->name('squads.leave');
 Route::post('/squads/{student}/kick', [SquadController::class, 'kickMember'])->name('squads.kick');
 
