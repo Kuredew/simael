@@ -21,11 +21,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Blade::if('student', function () {
-            return auth()->guard('student')->check();
+            return request()->is('dashboard*');
         });
 
         Blade::if('teacher', function () {
-            return auth()->guard('teacher')->check();
+            return request()->is('teacher*');
         });
     }
 }
