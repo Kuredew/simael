@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Landing Page
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('guest:student,teacher');
 
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])
