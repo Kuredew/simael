@@ -22,7 +22,7 @@ class GuestMiddleware
             if (Auth::guard($guard)->check()) {
 
                 if ($guard === 'student') {
-                    return redirect('/');
+                    return redirect('/dashboard');
                 }
 
                 if ($guard === 'teacher') {
