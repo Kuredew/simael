@@ -5,10 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Squad;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class SquadController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('student.auth', ['only' => 'store', 'update', 'kickMember', 'leave']);
+    }
+
     /**
      * Store a newly created resource in storage.
      */

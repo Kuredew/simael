@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\InviteSquad;
 use App\Models\Student;
+use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; 
 
 class InviteSquadController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('student.auth', ['only' => 'store', 'join', 'destroy']);
+    }
     public function store(Request $request) {
         InviteSquad::create([
             'squad_id' => $request['squad_id'],
