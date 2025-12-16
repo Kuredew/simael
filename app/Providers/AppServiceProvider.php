@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\URL;
@@ -26,11 +27,11 @@ class AppServiceProvider extends ServiceProvider
         };
         
         Blade::if('student', function () {
-            return request()->is('dashboard*');
+            return request()->is('dashboard*') && Auth::guard('student')->user();
         });
 
         Blade::if('teacher', function () {
-            return request()->is('teacher*');
+            return request()->is('teacher*') && Auth::guard('teacher')->user();
         });
     }
 }
