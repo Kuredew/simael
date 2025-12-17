@@ -26,6 +26,13 @@ class ApiController extends Controller
             'student_id' => 'integer',
         ]);
 
+        // Return error if student already invited by squad leader
+        $collection = InviteSquad::where('squad_id', $request['squad_id'])->get();
+        foreach ($collection as $data) {
+            if ($data['student_id'] == $request['student_id']) {
+                return response('Student has invited!', 400);
+            }
+        }
 
         InviteSquad::create($validate);
 
@@ -37,7 +44,7 @@ class ApiController extends Controller
     {
         $search = $request->query('search', '');
         $excludeSquadId = $request->query('exclude_squad_id', null);
-        
+
         $query = Student::query();
 
         if (!empty($search)) {
@@ -62,14 +69,14 @@ class ApiController extends Controller
                 'in_squad' => !is_null($student->squad_id),
                 'squad_name' => $student->squad ? $student->squad->name : null,
             ];
-            
+
             // Mark as unavailable if already in the squad being edited
             if ($excludeSquadId && $student->squad_id == $excludeSquadId) {
                 $data['unavailable'] = false; // Can be selected for same squad
             } elseif ($student->squad_id) {
                 $data['unavailable'] = true; // Cannot select if in another squad
             }
-            
+
             return $data;
         });
 

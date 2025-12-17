@@ -6,7 +6,7 @@
 
 {{-- <h1>Welcome {{ $student['name'] }}</h1>
 @if ($squad)
-<p>Squad kamu : {{ $squad->name }}</p> 
+<p>Squad kamu : {{ $squad->name }}</p>
 @else
 <p>Kamu belum masuk kedalam squad</p>
 @endif
@@ -61,7 +61,7 @@
                             <div class="flex items-start justify-between mb-6">
                                 <div>
                                     <div class="flex gap-5">
-                                        <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent shadow mb-3 
+                                        <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent shadow mb-3
                                             @if($squad->status === 'pengajuan') bg-yellow-200 text-yellow-900
                                             @elseif($squad->status === 'on-progress') bg-blue-200 text-blue-900
                                             @elseif($squad->status === 'diterima') bg-green-200 text-green-900
@@ -100,7 +100,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="flex justify-between mb-3">
                                 <div class="flex gap-5 items-center">
                                     <div>
@@ -281,12 +281,12 @@
     @if ($squad)
     <div id="modalEditCompany1" data-state="closed" class="hidden fixed inset-0 z-20 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" data-aria-hidden="true" aria-hidden="true" style="pointer-events: auto;"></div>
     <div id="modalEditCompany2" class="hidden fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg sm:max-w-md" style="pointer-events: auto;">
-        
+
         <div class="flex flex-col space-y-1.5 text-center sm:text-left">
             <h2 id="radix-_r_g_" class="text-lg font-semibold leading-none tracking-tight">Edit Squad Perusahaan</h2>
             <p id="radix-_r_h_" class="text-sm text-muted-foreground">Masukkan informasi Perusahaan PKL yang kamu dan temanmu ingin datangi.</p>
         </div>
-        <form action="{{ route('squads.update', $squad) }}" method="post"> 
+        <form action="{{ route('squads.update', $squad) }}" method="post">
             @method('PUT')
             @csrf
             <div class="space-y-4 py-4">
@@ -299,12 +299,12 @@
                     <textarea name="company_address" rows="3" class="flex w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-ring" id="squadName" placeholder="Masukkan Alamat">{{ $squad->company_address }}</textarea>
                 </div>
             </div>
-            
+
             <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
                 <button type="button" id="closeModalEditCompany1" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input shadow-sm hover:bg-red-500 hover:text-white cursor-pointer h-9 px-4 py-2">Batal</button>
                 <button type="submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground shadow hover:bg-blue-500 hover:text-white cursor-pointer h-9 px-4 py-2 bg-gradient-primary">Simpan</button>
             </div>
-            
+
             <button id="closeModalEditCompany2" type="button" class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-4 w-4" aria-hidden="true">
                     <path d="M18 6 6 18"></path>
@@ -338,12 +338,12 @@
 
     <div id="modalEditStatus1" data-state="closed" class="hidden fixed inset-0 z-20 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" data-aria-hidden="true" aria-hidden="true" style="pointer-events: auto;"></div>
     <div id="modalEditStatus2" class="hidden fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg sm:max-w-md" style="pointer-events: auto;">
-        
+
         <div class="flex flex-col space-y-1.5 text-center sm:text-left">
             <h2 id="radix-_r_g_" class="text-lg font-semibold leading-none tracking-tight">Edit Status</h2>
             <p id="radix-_r_h_" class="text-sm text-muted-foreground">Beri tahu guru bagaimana progress penerimaan PKL kalian.</p>
         </div>
-        <form action="{{ route('squads.update', $squad) }}" method="post"> 
+        <form action="{{ route('squads.update', $squad) }}" method="post">
             @method('PUT')
             @csrf
             <div class="space-y-4 py-4">
@@ -362,12 +362,12 @@
                     </select>
                 </div>
             </div>
-            
+
             <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
                 <button type="button" id="closeModalEditStatus1" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input shadow-sm hover:bg-red-500 hover:text-white cursor-pointer h-9 px-4 py-2">Batal</button>
                 <button type="submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground shadow hover:bg-blue-500 hover:text-white cursor-pointer h-9 px-4 py-2 bg-gradient-primary">Simpan</button>
             </div>
-            
+
             <button id="closeModalEditStatus2" type="button" class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-4 w-4" aria-hidden="true">
                     <path d="M18 6 6 18"></path>
@@ -399,15 +399,15 @@
         if (openModalEditCompany) openModalEditStatus.addEventListener('click', openModal);
     </script>
     @endif
-        
+
     <div id="modal2" data-state="closed" class="hidden fixed inset-0 z-20 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" data-aria-hidden="true" aria-hidden="true" style="pointer-events: auto;"></div>
     <div id="modal1" class="hidden fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg sm:max-w-md" style="pointer-events: auto;">
-        
+
         <div class="flex flex-col space-y-1.5 text-center sm:text-left">
             <h2 id="radix-_r_g_" class="text-lg font-semibold leading-none tracking-tight">Buat Squad Baru</h2>
             <p id="radix-_r_h_" class="text-sm text-muted-foreground">Masukkan nama squad PKL yang ingin kamu buat. Kamu akan menjadi leader dari squad ini.</p>
         </div>
-        <form action="{{ route('squads.store') }}" method="post"> 
+        <form action="{{ route('squads.store') }}" method="post">
             @csrf
             <div class="space-y-4 py-4">
                 <div class="space-y-2">
@@ -419,12 +419,12 @@
                     <input name="description" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-ring" id="squadName" placeholder="Ini Opsional" value="">
                 </div>
             </div>
-            
+
             <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
                 <button id="closeModalCreateSquad1" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input shadow-sm hover:bg-red-500 hover:text-white cursor-pointer h-9 px-4 py-2">Batal</button>
                 <button type="submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground shadow hover:bg-blue-500 hover:text-white cursor-pointer h-9 px-4 py-2 bg-gradient-primary">Buat Squad</button>
             </div>
-            
+
             <button id="closeModalCreateSquad2" type="button" class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-4 w-4" aria-hidden="true">
                     <path d="M18 6 6 18"></path>
@@ -459,7 +459,7 @@
     @if ($squad)
     <div id="modalAddAnggota2" data-state="closed" class="hidden fixed inset-0 z-20 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" data-aria-hidden="true" aria-hidden="true" style="pointer-events: auto;"></div>
     <div id="modalAddAnggota1" class="hidden fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg sm:max-w-md transition" style="pointer-events: auto;">
-        
+
         <div class="flex flex-col space-y-1.5 text-center sm:text-left">
             <h2 id="radix-_r_g_" class="text-lg font-semibold leading-none tracking-tight">Cari Student</h2>
             <p id="radix-_r_h_" class="text-sm text-muted-foreground">Cari student berdasarkan ID, Nama, Atau NISN</p>
@@ -483,12 +483,12 @@
                     </div>
                 </div>
             </div>
-            
+
             {{-- <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
                 <button id="closeModalCreateSquad1" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input shadow-sm hover:bg-red-500 hover:text-white cursor-pointer h-9 px-4 py-2">Batal</button>
                 <button type="submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 text-primary-foreground shadow hover:bg-blue-500 hover:text-white cursor-pointer h-9 px-4 py-2 bg-gradient-primary">Buat Squad</button>
             </div> --}}
-            
+
             <button id="closeModalAddAnggota" type="button" class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-4 w-4" aria-hidden="true">
                     <path d="M18 6 6 18"></path>
@@ -546,7 +546,18 @@
                     'student_id': student_id
                 })
             })
-            .then(() => {
+            .then((response) => {
+                if (!response.ok) {
+                    btn.classList.remove('bg-blue-500')
+                    btn.classList.remove('hover:bg-blue-600');
+                    btn.classList.remove('cursor-pointer');
+
+                    btn.classList.add('bg-gray-500');
+                    btn.innerHTML = 'Student already invited!';
+                    btn.disabled = true;
+                    return
+                }
+
                 btn.classList.remove('bg-blue-500')
                 btn.classList.remove('hover:bg-blue-600');
                 btn.classList.remove('cursor-pointer');
