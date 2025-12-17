@@ -6,7 +6,7 @@ use App\Models\InviteSquad;
 use App\Models\Student;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
 
 class InviteSquadController extends Controller
 {
@@ -30,6 +30,9 @@ class InviteSquadController extends Controller
         $student->update([
             'squad_id' => $invite['squad_id']
         ]);
+
+        // Delete after join
+        $invite->delete();
 
         return redirect()->route('dashboard');
     }
