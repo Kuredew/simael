@@ -1,0 +1,35 @@
+name: Manual Tag Release
+
+on:
+  push:
+    tags:
+      - 'v*' # Memicu rilis saat push tag yang diawali huruf 'v'
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Penting: ambil semua history agar changelog bisa dibuat
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate Changelog
+        run: |
+          npx conventional-changelog -p conventionalcommits -n changelog-config.js -i CHANGELOG.md -s -r 0
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          body_path: CHANGELOG.md # Menggunakan hasil generate tadi untuk isi release
+          generate_release_notes: false # Kita pakai generator sendiri di atas
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
