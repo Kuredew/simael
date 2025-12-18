@@ -28,10 +28,19 @@ jobs:
       - name: Generate and Update CHANGELOG.md
         run: |
           # Generate changelog dan gabungkan ke file yang sudah ada
-          npx conventional-changelog -p conventionalcommits -n changelog-config.cjs -i CHANGELOG.md -r 0 > CHANGELOG.md
+          npx conventional-changelog -p conventionalcommits -n changelog-config.cjs -r 0 > CHANGELOG.md
 
           # Generate latest release
-          npx conventional-changelog -p conventionalcommits -n changelog-config.cjs -r 1 > LATEST_RELEASE.md
+          npx conventional-changelog -p conventionalcommits -n changelog-config.cjs -r 2 | sed '1,/## /d' > TEMP_LATEST_RELEASE.md
+
+          # Ambil informasi versi dan tanggal
+          VERSION=${GITHUB_REF#refs/tags/}
+          DATE=$(date +%Y-%m-%d)
+
+          # Rakit ulang LATEST_RELEASE.md yang sempurna
+          echo "## $VERSION ($DATE)" > LATEST_RELEASE.md
+          echo "" >> LATEST_RELEASE.md
+          cat TEMP_LATEST_RELEASE.md >> LATEST_RELEASE.md
 
       - name: Commit and Push Release
         run: |
